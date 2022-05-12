@@ -1,4 +1,5 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const db = require('../../db/connection');
 
 router.get('/departments', (req, res) => {
@@ -9,11 +10,9 @@ router.get('/departments', (req, res) => {
             res.status(500).json({ error: err.message});
             return;
         }
-        res.json({
-            message: 'success',
-            data: rows
-        });
+        console.table(rows);
     });
 });
+
 
 module.exports = router;
